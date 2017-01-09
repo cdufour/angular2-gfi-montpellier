@@ -1,0 +1,9 @@
+import { Book } from './book';
+
+export const BOOKS: Book[] = [
+  {id: 1, title: 'Le Père Goriot', author: 'Balzac', year: 1842, available: true },
+  {id: 2, title: 'Germinal', author: 'Zola', year: 1880, available: true },
+  {id: 3, title: 'L\'éducation sentimentale', author: 'Flaubert', year: 1860, available: false },
+  {id: 4, title: 'Bouvard et Pécuchet', author: 'Flaubert', year: 1870, available: true },
+  {id: 5, title: 'Le Horla', author: 'Maupassant', year: 1885, available: true },
+]

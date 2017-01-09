@@ -1,0 +1,18 @@
+Créer un OrderByPipe
+
+qui prend une entrée un tableau d'objets
+et returne un tableau trié selon l'argument fourni (clé du tri)
+
+exemple d'utilisation
+
+books | orderBy:'author'
+
+
+
+
+angular-cli
+
+ng new project_name
+ng generate service service_name
+ng generate component component_name
+ng g p pipe_name

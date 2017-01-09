@@ -1,0 +1,48 @@
+<h1>{{title}}</h1>
+
+<p>{{example}}</p>
+
+<button class="btn btn-default" (click)="addForm = !addForm">Ajouter un livre</button>
+<form
+*ngIf="addForm"
+(submit)="submitBook()" class="well">
+  <input required type="text" placeholder="Titre" name="title" [(ngModel)]="book.title">
+  <input type="text" placeholder="Auteur" name="author" [(ngModel)]="book.author">
+  <input type="text" placeholder="Année" name="year" [(ngModel)]="book.year">
+  Disponible <input type="checkbox" name="available" [(ngModel)]="book.available">
+  <button type="submit" name="submit" class="btn btn-primary">Enregistrer</button>
+</form>
+
+<div class="well">
+  <input [(ngModel)]="search" type="text" placeholder="Rechercher">
+</div>
+
+<div>{{message}}</div>
+<p>{{books.length}} livres</p>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Auteur</th>
+      <th>Année de parution</th>
+      <th>Disponibilité</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tr
+    [ngClass]="{'selected':selectedBook === book}"
+    *ngFor="let book of filterBooks()">
+    <td class="clicable"
+    (click)="displayDetail(book)">{{book.title | example:false}}</td>
+    <td>{{ book.author | uppercase }}</td>
+    <td>{{ book.year }}</td>
+    <td [ngClass]="{'not-available':!book.available}">{{ availableMessage(book.available) }}</td>
+    <td>
+      <button (click)="editBook(book)" class="btn btn-default btn-xs">Editer</button>
+      <button (click)="deleteBook(book.id)" class="btn btn-danger btn-xs">Supprimer</button>
+    </td>
+  </tr>
+</table>
+<book-detail [book]="selectedBook"></book-detail>
+
+<!--<test></test>-->
